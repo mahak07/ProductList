@@ -45,7 +45,7 @@ export default function NewsReader() {
           setArticles(prev => [...prev, ...data.articles]);
         }
 
-        setPage(pageToLoad); // ✅ update current page AFTER setting articles
+        setPage(pageToLoad);
       } catch (e: any) {
         setError(e.message || 'Failed to load news');
       } finally {
@@ -67,8 +67,6 @@ export default function NewsReader() {
       loadArticles(page + 1);
     }
   };
-
-  // ✅ Runs every time this screen comes into focus
   useFocusEffect(
     useCallback(() => {
       const loadInitial = async () => {
