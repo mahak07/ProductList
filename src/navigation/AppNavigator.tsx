@@ -9,6 +9,9 @@ import { Button } from 'react-native';
 import Weather from '../screens/Weather.tsx';
 import NewsReader from '../screens/NewsReader.tsx';
 import { RootStackParamList } from './types.ts';
+import ExpenseTracker from '../screens/ExpenseTracker.tsx';
+import ChartScreen from '../screens/ChartScreen.tsx';
+import ExpenseForm from '../component/expenseForm.tsx';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -45,6 +48,13 @@ const AppNavigator = () => {
                         component={NewsReader}
                         options={{ title: 'News Reader' }}
                     />
+                    <Stack.Screen 
+                        name="ExpenseTracker" 
+                        component={ExpenseTracker} 
+                        options={{ title: 'Expense Tracker' }}
+                    />
+                    <Stack.Screen name="ExpenseForm" component={ExpenseForm} options={{ title: 'Add Expense' }} />
+                    <Stack.Screen name="ChartScreen" component={ChartScreen} options={{ title: 'Charts' }} />
                 </>) : (
                     <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
                 )}

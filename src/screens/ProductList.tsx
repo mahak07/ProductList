@@ -50,6 +50,7 @@ export default function ProductList() {
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 10 }}>
         <Button title="Weather" onPress={() => navigation.navigate('Weather')} />
         <Button title="News Reader" onPress={() => navigation.navigate('NewsReader')} />
+        <Button title="Expense Tracker" onPress={() => navigation.navigate('ExpenseTracker')} />
       </View>
 
       <TextInput
