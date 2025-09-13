@@ -1,7 +1,7 @@
 import { View, Text, Image } from "react-native";
 import styles from "../styles/styleProduct";
 import { Product } from "../interfaces/product";
-import { capitalize } from "../utility/utility";
+import { capitalize } from "../utils/utility";
 
 const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
   return (

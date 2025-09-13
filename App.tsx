@@ -5,12 +5,15 @@
  * @format
  */
 
-import ProductList from "./src/views/productList";
+import AppNavigator from "./src/navigation/AppNavigator";
+import { AuthProvider } from "./src/context/AuthContext";
 
 function App() {
     return (
-        <ProductList/>
-    )
+    <AuthProvider>
+      <AppNavigator />
+    </AuthProvider>
+  );
 }
 
 export default App;

@@ -1,11 +1,16 @@
 import useProducts from "../hooks/useProducts";
-import { FlatList, View, Text, ActivityIndicator, TextInput } from 'react-native';
+import { FlatList, View, Text, ActivityIndicator, TextInput, Button } from 'react-native';
 import ProductCard from "../component/productCard";
 import styles from "../styles/styleList";
 import { useState, useMemo, useRef, useEffect } from 'react';
 import { Picker } from '@react-native-picker/picker';
-import { capitalize } from "../utility/utility";
+import { capitalize } from "../utils/utility";
 import useCategories from "../hooks/useCategories";
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { RootStackParamList } from "../navigation/types";
+
+type ProductListNavigationProp = NativeStackNavigationProp<RootStackParamList, 'ProductList'>;
 
 export default function ProductList() {
   const [searchText, setSearchText] = useState('');
@@ -13,16 +18,11 @@ export default function ProductList() {
   const { data, loading, error, hasMore, loadMore } = useProducts(selectedCategory) ;
   const { data: categoriesData, error: catError } = useCategories();
   const ITEM_HEIGHT = 100;
+  const navigation = useNavigation<ProductListNavigationProp>();
 
   const handleLoadMore = () => {
     loadMore();
   };  
-
-  //  useEffect(() => {
-  //   if (flatListRef.current) {
-  //     flatListRef.current.scrollToOffset({ offset: 0, animated: false });
-  //   }
-  // }, [selectedCategory]);
   
   const renderFooter = () =>
     loading ? <ActivityIndicator size="small" color="#0000ff" /> : null;
@@ -43,10 +43,15 @@ export default function ProductList() {
       </View>
     );
   }
-
+``
   return (
 
     <View style={{ flex: 1, padding: 10 }}>
+      <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 10 }}>
+        <Button title="Weather" onPress={() => navigation.navigate('Weather')} />
+        <Button title="News Reader" onPress={() => navigation.navigate('NewsReader')} />
+      </View>
+
       <TextInput
         style={styles.searchInput}
         placeholder="Search products..."
